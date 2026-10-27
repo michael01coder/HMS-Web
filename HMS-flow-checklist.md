@@ -55,7 +55,7 @@
 - [x] HR creates a shift with category and times only
 - [x] Allocating a date range gives each person a row
 - [x] HR or Manager assigns a partner to a swap, and approval succeeds
-- [x] The names show correctly, with no 0000 anywhere
+- [ ] The names show correctly, with no 0000 anywhere
 - [ ] The swapped shifts actually move to the other person
 
 ## 10. Department navigation

@@ -5,7 +5,7 @@ export const staffService = {
   get: (id: string) => http<Staff>(`/staffs/${id}`),
   update: (id: string, dto: StaffUpdate) => http<Staff>(`/staffs/${id}`, 'PUT', dto),
   remove: (id: string) => http(`/staffs/${id}`, 'DELETE'),
-  /** Builds the full update payload from an existing record so partial edits never wipe other fields. */
+
   toUpdateDto: (s: Staff, o: Partial<StaffUpdate> = {}): StaffUpdate => ({
     employeeCode: s.employeeCode, firstName: s.firstName, lastName: s.lastName, phone: s.phone ?? '', departmentId: s.departmentId,
     designation: s.designation ?? '', employmentType: s.employmentType || 'Full-Time', managerId: s.managerId ?? null,
