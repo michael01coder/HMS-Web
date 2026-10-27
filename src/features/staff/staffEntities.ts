@@ -1,0 +1,8 @@
+import { Cfg } from '../../components/crud/types';
+import { ref, t, sel, num, bool, ro, R } from '../shared/entityKit';
+import { ADMINS as ADMIN, OWNERS as OWNER, HR_ONLY } from '../../config/roles';
+export const staffEntities: Record<string, Cfg> = {
+  staffNotes: { title: 'Staff notes', sub: 'Internal notes on staff members.', path: '/staffnotes', idKey: 'noteId', write: ['HR', 'Manager'], del: ['HR'], cols: [ref('staffId', 'Staff', R.staff, { update: false }), t('note', 'Note', { type: 'textarea', req: true }), ref('createdByStaffId', 'Author', R.staff, { ro: true, req: false }), ro('createdAt', 'Created', 'date')] },
+  staffDocuments: { title: 'Staff documents', sub: 'Contracts, IDs and certificates.', path: '/staffdocuments', idKey: 'documentId', write: ['HR'], noEdit: true, cols: [ref('staffId', 'Staff', R.staff), sel('documentType', 'Type', ['Contract', 'ID Proof', 'Certificate', 'Offer Letter', 'Other']), t('documentName', 'Name', { req: true }), t('fileUrl', 'File URL', { req: true }), ro('uploadedAt', 'Uploaded', 'date')] },
+  anomalies: { title: 'Attendance anomalies', sub: 'Pending attendance exceptions to review.', path: '/attendanceanomalies', listPath: '/attendanceanomalies/pending', idKey: 'anomalyId', write: ['HR', 'Manager'], del: ['HR'], cols: [t('attendanceId', 'Attendance ID', { req: true, update: false, list: false, hint: 'Attendance GUID' }), ref('staffId', 'Staff', R.staff, { update: false }), sel('anomalyType', 'Type', ['LateArrival', 'EarlyDeparture', 'MissingClockOut']), t('reason', 'Reason', { max: 500 }), sel('status', 'Status', ['Pending', 'Resolved', 'Ignored'], { def: 'Pending' }), ro('reportedAt', 'Reported', 'date')] },
+};

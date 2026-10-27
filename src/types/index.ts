@@ -1,0 +1,11 @@
+export interface Session { accessToken: string; refreshToken: string; email: string; role: string; staffId: string; tenantId?: string | null; hotelId?: string | null }
+export interface Staff { staffId: string; hotelId: string; employeeCode: string; firstName: string; lastName: string; email: string; phone: string; departmentId: number; departmentName?: string; designation: string; employmentType: string; managerId?: string | null; managerName?: string; joiningDate: string; salary: number; role: string; isActive: boolean }
+export interface StaffUpdate { employeeCode: string; firstName: string; lastName: string; phone: string; departmentId: number; designation: string; employmentType: string; managerId: string | null; joiningDate: string; salary: number; isActive: boolean }
+export interface Department { departmentId: number; hotelId: string; departmentName: string; departmentCode: string; isActive: boolean; budgetedHeadcount: number }
+export interface Designation { designationId: number; hotelId: string; designationName: string; departmentId?: number | null; isActive: boolean }
+export interface Shift { shiftId: string; shiftName: string; shiftCategory: string; startTime: string; endTime: string; isActive: boolean }
+export interface Allocation { allocationId: string; staffId: string; shiftId: string; workDate: string; allocationType: string; shift?: Shift }
+export interface Swap { swapRequestId: string; requesterStaffId: string; requesterAllocationId: string; targetStaffId: string; targetAllocationId?: string | null; reason?: string; status: string; requestedAt: string; requesterAllocation?: Allocation; targetAllocation?: Allocation }
+export interface Attendance { attendanceId: string; staffId: string; attendanceDate: string; clockInTime: string; clockOutTime?: string | null; totalHours: number; overtimeHours: number; status: string; remarks?: string }
+export interface Leave { leaveApplicationId: string; staffId: string; leaveTypeName: string; startDate: string; endDate: string; totalDays: number; reason?: string; status: string; appliedOn: string }
+export interface RegisterPayload { tenantId?: string | null; hotelId?: string | null; firstName: string; lastName: string; email: string; password: string; phone: string; role: string; departmentId?: number; departmentName?: string }
