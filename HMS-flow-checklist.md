@@ -2,7 +2,7 @@
 
 ## 1. Setup and login
 - [x] SuperAdmin (seeded) signs in and the sidebar shows only Tenants and Onboard Tenant
-- [ ] Wrong password shows an error and doesn't sign in
+- [x] Wrong password shows an error and doesn't sign in
 - [x] Sign out, then refreshing a page while signed out goes to /login
 
 ## 2. SuperAdmin onboarding
